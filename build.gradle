@@ -14,7 +14,7 @@ repositories {
 }
 
 def runeLiteVersion = 'latest.release'
-def pluginMainClass = 'com.example.ExtraWikiLinksTest'
+def pluginMainClass = 'com.iskela45.ExtraWikiLinksTest'
 
 dependencies {
 	compileOnly group: 'net.runelite', name:'client', version: runeLiteVersion
@@ -27,7 +27,7 @@ dependencies {
 	testImplementation group: 'net.runelite', name:'jshell', version: runeLiteVersion
 }
 
-group = 'com.extrawikilinks'
+group = 'com.iskela45'
 version = '1.0'
 
 tasks.withType(JavaCompile).configureEach {

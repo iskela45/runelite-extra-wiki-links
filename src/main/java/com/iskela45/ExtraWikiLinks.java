@@ -1,4 +1,4 @@
-package com.example;
+package com.iskela45;
 
 import com.google.inject.Provides;
 import java.util.Map;
