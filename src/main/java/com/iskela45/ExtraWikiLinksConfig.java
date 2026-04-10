@@ -19,10 +19,32 @@ public interface ExtraWikiLinksConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "temporaryBoosts",
+		name = "Temporary boosts",
+		description = "Show a link to the skill's temporary boosts section on the wiki",
+		position = 2
+	)
+	default boolean temporaryBoosts()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+		keyName = "quests",
+		name = "Quests",
+		description = "Show a link to the skill's quests section on the wiki",
+		position = 3
+	)
+	default boolean quests()
+	{
+		return false;
+	}
+
+	@ConfigItem(
 		keyName = "membersGuide",
 		name = "Members training guide",
 		description = "Show a link to the skill's members training guide on the wiki",
-		position = 2
+		position = 4
 	)
 	default boolean membersGuide()
 	{
@@ -33,7 +55,7 @@ public interface ExtraWikiLinksConfig extends Config
 		keyName = "f2pGuide",
 		name = "Free-to-play training guide",
 		description = "Show a link to the skill's free-to-play training guide on the wiki",
-		position = 3
+		position = 5
 	)
 	default boolean f2pGuide()
 	{
@@ -44,7 +66,7 @@ public interface ExtraWikiLinksConfig extends Config
 		keyName = "ironmanGuide",
 		name = "Ironman training guide",
 		description = "Show a link to the skill's ironman training guide on the wiki",
-		position = 4
+		position = 6
 	)
 	default boolean ironmanGuide()
 	{
@@ -55,7 +77,7 @@ public interface ExtraWikiLinksConfig extends Config
 		keyName = "uimGuide",
 		name = "Ultimate Ironman training guide",
 		description = "Show a link to the skill's ultimate ironman training guide on the wiki",
-		position = 5
+		position = 7
 	)
 	default boolean uimGuide()
 	{

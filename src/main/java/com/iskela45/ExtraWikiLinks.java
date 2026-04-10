@@ -161,6 +161,8 @@ public class ExtraWikiLinks extends Plugin
 		if (config.ironmanGuide()) addGuideEntry("Ironman guide", IRONMAN_GUIDES, cleanSkillName, skillName);
 		if (config.f2pGuide()) addGuideEntry("F2P guide", F2P_GUIDES, cleanSkillName, skillName);
 		if (config.membersGuide()) addGuideEntry("Members guide", MEMBERS_GUIDES, cleanSkillName, skillName);
+		if (config.quests()) addEntry("Quests", cleanSkillName + "#Quests", skillName);
+		if (config.temporaryBoosts()) addEntry("Boosts", cleanSkillName + "#Temporary_boosts", skillName);
 		if (config.levelUpTable()) addEntry("Level-up table", cleanSkillName + "/Level_up_table", skillName);
 	}
 
