@@ -1,2 +1,20 @@
-# Example
-An example greeter plugin
+# Extra Wiki Links
+
+Do you chronically check the level-up table mid-grind? Constantly opening the skill page just to navigate to the training guide? This plugin adds right-click wiki links directly on your skills, saving you a handful of clicks every time.
+
+Each link type can be toggled individually in the plugin settings, so you only see what's relevant to your account.
+
+| Link | Default | Description |
+|------|---------|-------------|
+| Level-up table | On | The skill's level-up reward table |
+| Temporary boosts | Off | Boosts that temporarily raise the skill level |
+| Quests | Off | Quests that grant experience in the skill |
+| Members training guide | Off | Pay-to-play training guide |
+| Free-to-play training guide | Off | F2P training guide |
+| Ironman training guide | Off | Ironman training guide |
+| Ultimate Ironman training guide | Off | Ultimate Ironman training guide |
+
+## Notes
+
+- Attack, Strength, and Defence share the same melee training guide links
+- Hitpoints has no training guide and will not show guide links
