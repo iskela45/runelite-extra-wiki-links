@@ -154,7 +154,7 @@ public class ExtraWikiLinks extends Plugin
 			return;
 		}
 
-		String skillName = action.replace("View ", "").replace(" guide", "");
+		String skillName = action.replaceFirst("^View ", "").replaceFirst(" guide$", "");
 		String cleanSkillName = Text.removeTags(skillName);
 
 		if (config.uimGuide()) addGuideEntry("UIM guide", UIM_GUIDES, cleanSkillName, skillName);
