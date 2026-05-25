@@ -1,5 +1,7 @@
 # Extra Wiki Links
 
+[![Active Installs](https://img.shields.io/endpoint?url=https://api.runelite.net/pluginhub/shields/installs/plugin/extra-wiki-links)](https://runelite.net/plugin-hub/show/tombs-of-amascut)
+
 Do you chronically check the level-up table mid-grind? Constantly opening the skill page just to navigate to the training guide? Can't recall what wine boosts Runecrafting by 1? This plugin adds useful right-click wiki links directly on your skills, saving you a handful of clicks every time.
 
 Each link type can be toggled individually in the plugin settings, so you only see what's relevant to your account.
