@@ -13,8 +13,8 @@ Each link type can be toggled individually in the plugin settings, so you only s
 | Link | Default | Description |
 |------|---------|-------------|
 | Level-up table | On | The skill's level-up reward table |
-| Temporary boosts | Off | Boosts that temporarily raise the skill level |
-| Quests | Off | Quests that grant experience in the skill |
+| Temporary boosts | On | Boosts that temporarily raise the skill level |
+| Quests | On | Quests that grant experience in the skill |
 | Members training guide | Off | Pay-to-play training guide |
 | Free-to-play training guide | Off | F2P training guide |
 | Ironman training guide | Off | Ironman training guide |
