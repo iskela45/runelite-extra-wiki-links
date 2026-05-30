@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.stream.Stream;
 import javax.inject.Inject;
 import net.runelite.api.Client;
+import net.runelite.api.Menu;
 import net.runelite.api.MenuAction;
 import net.runelite.api.events.MenuEntryAdded;
 import net.runelite.api.gameval.InterfaceID;
@@ -157,29 +158,51 @@ public class ExtraWikiLinks extends Plugin
 		String skillName = action.replaceFirst("^View ", "").replaceFirst(" guide$", "");
 		String cleanSkillName = Text.removeTags(skillName);
 
-		if (config.uimGuide()) addGuideEntry("UIM guide", UIM_GUIDES, cleanSkillName, skillName);
-		if (config.ironmanGuide()) addGuideEntry("Ironman guide", IRONMAN_GUIDES, cleanSkillName, skillName);
-		if (config.f2pGuide()) addGuideEntry("F2P guide", F2P_GUIDES, cleanSkillName, skillName);
-		if (config.membersGuide()) addGuideEntry("Members guide", MEMBERS_GUIDES, cleanSkillName, skillName);
-		if (config.quests()) addEntry("Quests", cleanSkillName + "#Quests", skillName);
-		if (config.temporaryBoosts()) addEntry("Boosts", cleanSkillName + "#Temporary_boosts", skillName);
-		if (config.levelUpTable()) addEntry("Level-up table", cleanSkillName + "/Level_up_table", skillName);
+		Menu submenu = null;
+		if (config.groupEntries())
+		{
+			int count = 0;
+			if (config.levelUpTable()) count++;
+			if (config.temporaryBoosts()) count++;
+			if (config.quests()) count++;
+			if (config.membersGuide() && MEMBERS_GUIDES.containsKey(cleanSkillName)) count++;
+			if (config.f2pGuide() && F2P_GUIDES.containsKey(cleanSkillName)) count++;
+			if (config.ironmanGuide() && IRONMAN_GUIDES.containsKey(cleanSkillName)) count++;
+			if (config.uimGuide() && UIM_GUIDES.containsKey(cleanSkillName)) count++;
+
+			if (count >= 2)
+			{
+				submenu = client.getMenu().createMenuEntry(-1)
+					.setOption("Wiki links")
+					.setTarget(skillName)
+					.setType(MenuAction.RUNELITE)
+					.createSubMenu();
+			}
+		}
+
+		if (config.uimGuide()) addGuideEntry(submenu, "UIM guide", UIM_GUIDES, cleanSkillName, skillName);
+		if (config.ironmanGuide()) addGuideEntry(submenu, "Ironman guide", IRONMAN_GUIDES, cleanSkillName, skillName);
+		if (config.f2pGuide()) addGuideEntry(submenu, "F2P guide", F2P_GUIDES, cleanSkillName, skillName);
+		if (config.membersGuide()) addGuideEntry(submenu, "Members guide", MEMBERS_GUIDES, cleanSkillName, skillName);
+		if (config.quests()) addEntry(submenu, "Quests", cleanSkillName + "#Quests", skillName);
+		if (config.temporaryBoosts()) addEntry(submenu, "Boosts", cleanSkillName + "#Temporary_boosts", skillName);
+		if (config.levelUpTable()) addEntry(submenu, "Level-up table", cleanSkillName + "/Level_up_table", skillName);
 	}
 
-	private void addGuideEntry(String option, Map<String, String> guides, String cleanSkillName, String target)
+	private void addGuideEntry(Menu submenu, String option, Map<String, String> guides, String cleanSkillName, String target)
 	{
 		String urlPath = guides.get(cleanSkillName);
 		if (urlPath == null)
 		{
 			return;
 		}
-		addEntry(option, urlPath, target);
+		addEntry(submenu, option, urlPath, target);
 	}
 
-	private void addEntry(String option, String urlPath, String target)
+	private void addEntry(Menu submenu, String option, String urlPath, String target)
 	{
 		final String url = WIKI_BASE + urlPath;
-		client.getMenu().createMenuEntry(-1)
+		(submenu != null ? submenu : client.getMenu()).createMenuEntry(-1)
 			.setOption(option)
 			.setTarget(target)
 			.setType(MenuAction.RUNELITE)
